@@ -7,26 +7,10 @@
         <img src="{% static 'img/core-img/hamburger.png' %}" alt="">
     </div>
 
-    <!-- Search Wrapper -->
-    <div class="search-wrapper">
-        <!-- Close Btn -->
-        <div class="close-btn"><i class="fa fa-times" aria-hidden="true"></i></div>
+    {% include 'partials/_search.html' %}
+    {% include 'partials/_menu.html' %}
 
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <form action="#" method="post">
-                        <input type="search" name="search" placeholder="O que está procurando...">
-                        <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {% include 'partials/menu.html' %}
-
-        <!-- Receipe Post Search -->
+        <!-- Receipe Post Search 
         <div class="receipe-post-search mb-80">
             <div class="container">
                 <form action="#" method="post">
@@ -44,14 +28,18 @@
                     </div>
                 </form>
             </div>
-        </div>
+        </div> -->
 
         <!-- Receipe Slider -->
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="receipe-slider owl-carousel">
-                        <img src="{% static 'img/bg-img/tomate_banner.jpg' %}">
+                        {% if receita.photo == '' %}
+                            <img src="{% static 'img/bg-img/tomate_banner.jpg' %}">
+                        {% else %}
+                            <img src="{{receita.photo.url}}">
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -70,7 +58,7 @@
                                 <h6>Preparo: {{receita.prepare_time}} minutos</h6>
                                 <h6>Rendimento: {{receita.yields}}</h6>
                                 <h6>Categoria: {{receita.category}}</h6>
-                                <h6>Por: Pessoa</h6>
+                                <h6>Por: {{receita.people}}</h6>
                             </div>
                         </div>
                     </div>
@@ -96,6 +84,6 @@
                 </div>
                 <!-- Ingredientes -->
 
-    {% include 'partials/footer.html' %}
+    {% include 'partials/_footer.html' %}
 
 {% endblock %}

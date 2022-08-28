@@ -6,7 +6,7 @@
         <i class="circle-preloader"></i>
         <img src="{% static 'img/core-img/pizza.png' %}" alt="">
     </div>
-
+    
     {% include 'partials/_search.html' %}
     {% include 'partials/_menu.html' %}
 
@@ -33,6 +33,8 @@
                         </div>
                     </div>
                     {% endfor %}
+                {% else %}
+                    <div class="col-12 col-sm-6 col-lg-4">Receita Não Encontrada</div>
                 {% endif %}
             </div>
         </div>
